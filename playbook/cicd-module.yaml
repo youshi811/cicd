@@ -1,0 +1,16 @@
+---
+- name: cicd with docker module
+  hosts: ansible_host
+  tasks:
+  - name: Build an image
+    docker_image:
+      build:
+        path: ~/hello-world
+      name: my-hello-world
+      tag: latest
+      push: no
+      source: build
+  - name: Container started
+    docker_container:
+      name: my-hello-world-container
+
