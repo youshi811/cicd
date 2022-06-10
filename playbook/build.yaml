@@ -1,0 +1,19 @@
+---
+- name: cicd with docker module
+  hosts: ansible_host
+  tasks:
+  - name: Remove image
+    docker_image:
+      state: absent
+      name: freeeco/my-hello-world
+      tag: latest
+
+  - name: Build an image
+    docker_image:
+      build:
+        path: ~/hello-world
+      name: freeeco/my-hello-world
+      tag: latest
+      push: yes
+      source: build
+
