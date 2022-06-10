@@ -13,4 +13,6 @@
   - name: Container started
     docker_container:
       name: my-hello-world-container
-
+      state: started
+      image: my-hello-world:latest
+
